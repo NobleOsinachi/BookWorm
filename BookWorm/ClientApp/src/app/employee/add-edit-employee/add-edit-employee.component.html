@@ -1,0 +1,79 @@
+
+
+
+
+<form #f="ngForm" class="form" role="form">
+    <div class="row">
+        <div class="col-lg-6 col-md-12 col-md-6 col-sm-12">
+            <div class="form-group ">
+                <label class="control-label" for="id">Employee Id</label>
+                <input class="form-control" type="text" name="id" [(ngModel)]="id" readonly>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label" for="name">Employee Name</label>
+                <input required minlength="3" type="text" id="name" name="name" class="form-control" [(ngModel)]="name" placeholder="Enter Employee name" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label" for="departmentId">Department</label>
+                <select class="form-control" [(ngModel)]="departmentId"
+                        id="departmentId"
+                        name="departmentId">
+                    <option disabled>-- Select Department --</option>
+                    <option class="active" *ngFor="let item of departmentsList" [value]="item.id">{{item.name}}</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label" for="name">Date of Joining </label>
+
+                <input #date class="form-control" required type="date" name="dateOfJoining" [(ngModel)]="dateOfJoining " />
+
+                <div class="alert alert-info">{{dateOfJoining | date: 'fullDate' }}</div>
+            </div>
+        </div>
+
+
+        <div class="text-center">
+            <div class="col-lg-6 col-md-12 col-md-6 col-sm-12">
+                <div class="form-group ">
+                    <div>
+                        <img alt="Your photo no dey database"
+                             [src]="url"
+                             class="img-circle img-thumbnail card-img imageCell figure-img img-thumbnail img-fluid"
+                             width="200"
+                             height="200" />
+
+
+                        <!-- [(ngModel)]="photoFileName" [value]="photoFileName"  -->
+                        <input type="file"
+                               accept="image/*"
+                               [(ngModel)]="photoFileName"
+                               name="photoFileName"
+                               class="form-control"
+                               (change)="uploadPhoto($event)" />
+                        <small class="form-control-static">{{photoFileName}}     </small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="form-group">
+            <input data-dismiss="@modal" *ngIf="employee.id == 0" type="submit" value="Add" class="btn btn-primary"
+                   (click)="addEmployee()" />
+            <input data-dismiss="@modal" *ngIf="employee.id != 0" type="submit" value="Update" class="btn btn-primary"
+                   (click)="updateEmployee()" />
+        </div>
+    </div>
+
+    <code><pre>{{ f.value | json}}</pre></code>
+
+
+
+</form>
+

@@ -1,0 +1,52 @@
+
+<div class="alert alert-success" *ngIf="isAdded==true">
+  <div class="close" data-dismiss="alert-success" (click)="isAdded=false;">&times;</div>
+  <div>Course added successfully.</div>
+</div>
+
+
+
+<h3>{{ "Title is: "+post.name }}<!--<favourite [isFavourite]="post.isFavourite" (change)="onFavouriteChanged($event)"></favourite>--></h3>
+ 
+<input class="btn btn-link" type="button" (click)="onAdd()" name="addCourse" value="Add course" />
+
+<div *ngIf="courses.length > 0; else noCourses;">
+  <h2>Courses <span class="small">from courses.service</span></h2>
+
+  <ul>
+    <li *ngFor="let course of courses;index as index; even as isEven">
+      {{ index }} {{ course }} {{isEven}}
+
+      <input type="button" (click)="onRemove(course)" name="onRemove" value="Remove" />
+    </li>
+
+  </ul>
+</div>
+
+<ng-template #noCourses>
+
+  <div class="alert alert-danger">
+    <div>No courses have been uploaded.</div>
+  </div>
+</ng-template>
+
+
+
+<button (click)="onSave($event)"
+        class='btn btn-danger'>
+  Save
+</button>
+
+
+<input [placeholder]="email"
+       [(ngModel)]="email"
+       (keyup.enter)="onKeyUp()" />
+<br>{{email}}<br>
+
+<span>
+  {{title | summary :email }}
+</span>
+
+
+
+

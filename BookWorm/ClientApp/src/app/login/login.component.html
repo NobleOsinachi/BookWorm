@@ -1,0 +1,15 @@
+<div class="container"> <a _ngcontent-ng-cli-universal-c46="" class="nav-link text-dark"
+        ng-reflect-router-link="/counter" href="/">Courses</a>
+    <h2>Login Page</h2>
+    <form>
+        <div class="form-group"> <label for="email">Email Address</label> <input class="form-control" id="email"
+                type="text" name="email" [(value)]="email" [(ngModel)]="email" /> </div>
+        <div class="form-group"> <label for="password">Password</label> <input class="form-control" type="text"
+                id="password" name="password" [(ngModel)]="password" value="{{password}}" /> </div>
+        <div class="btn-group"> <input class="btn btn-primary" type="submit" name="Submit" value="Submit" /> <input
+                class="btn btn-danger" type="reset" name="Reset" value="Reset" /> </div>
+    </form>
+    <p> email = {{email}} </p>
+    <p> password = {{password}} </p> <br /> <button class="btn btn-info">Submit</button>
+</div>
+<!--<contact-form></contact-form>-->

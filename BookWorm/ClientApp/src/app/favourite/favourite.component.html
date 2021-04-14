@@ -1,0 +1,47 @@
+
+
+
+
+<span class="glyphicon glyphicon-star{{ isFavourite === true ? '' : '-empty' }}" [class.glyphicon-star]="isFavourite" [class.glyphicon-star-empty]="!isFavourite" (click)="toggleSave()"></span><br>
+<div class="form-group">
+    <label class="" for="phone">Phone number</label>
+    <input class="form-control" type="tel" id="phone" accept="image" name="phone" [(ngModel)]="title" />
+</div>
+<p>{{ title | phone}}</p>
+<ul class="nav nav-pills">
+    <li [class.active]="viewMode === 'map'">
+        <a (click)="viewMode = 'map'">Map View</a>
+    </li>
+    <li [class.active]="viewMode === 'list'">
+        <a (click)="viewMode = 'list'">List View</a>
+    </li>
+</ul>
+<div class="jumbotron">
+    <div [ngSwitch]="viewMode">
+        <div *ngSwitchCase="'map'">Map View Content</div>
+        <div *ngSwitchCase="'list'">List View Content</div>
+        <div *ngSwitchDefault>Otherwise</div>
+    </div>
+</div>{{noble}}
+<form>
+
+    <br>
+    <img [src]="url" class="img-square img-responsive img-rounded img-thumbnail img-circle" alt="No image yet">
+    <input type="file" #fileUpload
+           class="file-input" accept="image/*"
+           name="uploadFile" [(ngModel)]="fileName"
+           onchange="console.log(event.target.files)"
+           (change)="onFileSelected($event)" required />
+
+    <div class="file-upload">{{fileName || "Nothing don show yet..."}}</div>
+    <button (click)="fileUpload.click()" type="submit">SUBMIT</button>
+
+
+</form>
+
+<style>
+    .img-square{
+        width:200px;
+        height: 200px;
+    }
+</style>

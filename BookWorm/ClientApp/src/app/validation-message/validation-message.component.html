@@ -1,0 +1,8 @@
+<div class="alert alert-danger" *ngIf="model.touched && !model.valid">
+  <span class="close" data-dismiss="alert-danger">&times;</span>
+  <div *ngIf="model.errors.required">This field is required </div>
+  <div *ngIf="model.errors.minlength">This field should have {{ model.errors.minlength.requiredLength }} characters or more </div>
+  <!--<div *ngIf=""> </div>-->
+
+
+</div>

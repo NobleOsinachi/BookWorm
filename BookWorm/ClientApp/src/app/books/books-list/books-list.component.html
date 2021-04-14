@@ -1,0 +1,76 @@
+<div class="container">
+
+  <!-- ALERT START -->
+  <i class="glyphicon glyphicon-book"></i>
+  <span>
+    <div class="alert alert-dismissible fade in" [ngClass]="{
+    'alert-danger': !showImage, 
+    'alert-success' : showImage
+  }" role="alert">
+      <button type="button" class="close" data-dismiss="alert">
+        <span title="CLOSE" aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+      </button>
+      <strong>
+        Picture
+        {{showImage != true ? "hidden" : "shown" }}
+        successfully
+      </strong>
+    </div>
+  </span>
+
+  <input type="button" (click)="changeMethod()" value="CLICK ME TO TEST ngOnChanges Method">
+  <!-- ALERT END -->
+
+
+  <h1>{{showMessage}}</h1>
+  <h1>{{favoriteMessage}}</h1>
+
+  <section id="products">
+    <div class="row">
+      <div class="container">
+        <h2>Books List</h2>
+      </div>
+      <div class="col-md-4" *ngFor="let book of books">
+
+        <div class="thumbnail">
+          <input class="btn btn-primary" type="button" value="{{ showImage?'Hide Image':'Show Image' }}"
+            (click)="toggleImage()">
+
+          <img [src]="book.bookImageUrl" [style.width.px]="imageWidth" *ngIf="showImage">
+          <div class="caption">
+            <h4 class="pull-right">{{book.bookPrice | currency: 'NGN' : '₦'}}</h4>
+            <h4><a href="product.html">{{book.bookAuthor}}</a></h4>
+            <p><b>Author: </b> {{book.bookTitle}}</p>
+            <p><b>Description: </b>{{book.bookDescription | limitChar : "10"}}</p>
+            <p><b>Published On: </b>{{book.publishedOn | date: 'fullDate' }}</p>
+            <p><b>In Stock: </b>{{ book.inStock | uppercase}}</p>
+            <!-- <span *ngRepeat="let number in starReviews" class="glyphicon glyphicon-star review">{{number}}</span> -->
+
+            <div class="text-warning">
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+          </div>
+            <p class="pull-right">Reviews {{book.bookReviews}}</p>
+
+            <div class="clearfix">
+              <p class="text-success" *ngIf="booksInStock > 0">Number in Stock: {{booksInStock}}</p>
+            </div>
+            <div class="clearfix">
+              <!-- <bs-favorite 
+              [reviews]="book.bookReviews" 
+              [favorite]="book.bookTitle" 
+              
+              (favoriteClicked)="onFavoriteClicked($event)">
+              </bs-favorite> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- {{imageWidth}} {{book.bookAuthor}}{{bootTitle}}{{book.bookDescription}}{{book.bookReviews}}-->

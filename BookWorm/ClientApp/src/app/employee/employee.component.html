@@ -1,0 +1,51 @@
+<!-- Trigger the modal with a button --><button style="float: right;" type="button" class="  btn btn-info " data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false" (click)="addClick()">Add Employee</button><!-- Modal --><div id="myModal" class="modal fade" role="dialog"><div class="modal-dialog modal-dialog-centered modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" (click)="closeClick()" #closeModal>&times;</button><h4 class="modal-title">{{ modalTitle }}</h4></div><div class="modal-body"><spinner *ngIf="!isAddEditComponentActive"></spinner><app-add-edit-employee [emp]="employee" *ngIf="isAddEditComponentActive"></app-add-edit-employee></div><!-- <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div> --></div></div></div><ng-template #noCourses>    <div><style type="text/css">
+body {
+font-family: Arial, Helvetica, sans-serif;
+font-size: 14px;
+line-height: 20px;
+color: #444;
+}
+
+.page {
+width: 740px;
+margin: 50px auto;
+text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+font-family: 'Arial', 'Segoe UI', Arial, helvetica, sans-serif;
+font-weight: 400;
+margin: 0;
+}
+
+h1 {
+font-size: 100px;
+line-height: 140px;
+color: #999;
+margin-bottom: 50px;
+}
+
+p {
+font-size: 16px;
+line-height: 22px;}</style><div class="page"><img src="/Resources/Images/sad.png" width="128" height="128" /><h1>Oops!</h1><div class="alert alert-info"><p>No employee records are in the database. Create one!</p></div></div></div></ng-template><div *ngIf="employeesList.length > 0; else noCourses;"><table class="table table-striped">
+<thead>
+<tr>
+<th>EmployeeId</th>
+<th>Employee Name</th>
+<th>Department</th>
+<th>Date of Joining</th>
+<th>Options</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let data of employeesList">
+<td>{{ data.id }}</td>
+<td>{{ data.name }}</td>
+<td>{{ data.department.name }}</td>
+<td>{{ data.dateOfJoining | date: 'fullDate' }}</td>
+<td>
+<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false" (click)="editClick(data)"><span class="glyphicon glyphicon-pencil"></span><span> Edit</span></button>
+<button type="button" class="btn btn-default" (click)="deleteClick(data)"><span class="glyphicon glyphicon-trash"></span><span> Delete</span></button>
+</td>
+</tr>
+</tbody></table></div>
