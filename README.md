@@ -1,0 +1,2 @@
+This demonstrates the power of a SPA framework (i.e. Angular) and a robust server-side framework (i.e. ASP .NET Core) to build a robust web application 
+#Angular #ASP.NET #Node #Bootstrap #SQLServer #EntityFramework #EntityFrameworkCore 

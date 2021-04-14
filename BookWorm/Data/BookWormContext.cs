@@ -38,7 +38,7 @@ namespace BookWorm.Data
         public DbSet<Staff> Staffs { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Department> Departments { get; set; }
-        public DbSet<HomeController> HomeController { get; set; }
+        
 
         
 
